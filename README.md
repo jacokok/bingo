@@ -1,5 +1,9 @@
 # Buzzword Bingo
 
+## Check it out
+
+https://jacokok.github.io/bingo/
+
 ## Get started
 
 ```bash

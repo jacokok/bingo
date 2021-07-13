@@ -25,7 +25,9 @@ export const Config = (props: Props) => {
         aria-labelledby="number-slider"
         valueLabelDisplay="auto"
         min={1}
-        onChange={(evt, newvalue) => props.setBoardCount(newvalue)}
+        onChange={(evt, newvalue) =>
+          props.setBoardCount(Array.isArray(newvalue) ? newvalue[0] : newvalue)
+        }
       />
       <Button variant="contained" color="primary">
         Generate
