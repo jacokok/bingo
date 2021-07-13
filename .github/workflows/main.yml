@@ -22,5 +22,11 @@ jobs:
 
       - run: npm ci
 
-      - name: Deploy
-        run: npm run deploy
+      - name: build
+        run: npm run build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: dist
