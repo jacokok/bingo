@@ -1,4 +1,8 @@
-# Buzzword Bingo Generator
-This will generate a list of bingo from an array list in the js/bingo.js file.
+# Buzzword Bingo
 
-There you can specify the words to use and how many bingo cards you want.
+## Get started
+
+```bash
+npm i
+npm run dev
+```
