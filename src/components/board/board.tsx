@@ -7,6 +7,7 @@ import { useTheme } from "@material-ui/core/styles";
 
 interface Props {
   words: Array<string>;
+  isBreak: boolean;
 }
 
 export const Board = (props: Props) => {
@@ -37,6 +38,8 @@ export const Board = (props: Props) => {
     header: {
       fontSize: 50,
       color: theme.palette.primary.main,
+      height: 60,
+      lineHeight: "60px",
     },
     text: {
       color: theme.palette.primary.main,
@@ -45,9 +48,10 @@ export const Board = (props: Props) => {
       border: "2px solid " + theme.palette.primary.main,
     },
     container: {
-      margin: 20,
-      display: "flex",
-      justifyContent: "center",
+      margin: "20px auto",
+    },
+    table: {
+      margin: "auto",
     },
   });
 
@@ -66,7 +70,7 @@ export const Board = (props: Props) => {
 
   return (
     <div className={classes.container}>
-      <table>
+      <table className={classes.table}>
         <thead>
           <tr>
             <td className={classes.td}>
@@ -88,6 +92,7 @@ export const Board = (props: Props) => {
         </thead>
         <tbody>{rows}</tbody>
       </table>
+      {props.isBreak ? <div style={{ pageBreakAfter: "always" }}></div> : null}
     </div>
   );
 };

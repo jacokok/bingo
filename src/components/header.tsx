@@ -7,8 +7,12 @@ import {
 } from "@material-ui/core";
 import React, { useState } from "react";
 
-export const Header = () => (
-  <AppBar position="static">
+interface Props {
+  styles: any;
+}
+
+export const Header = (props: Props) => (
+  <AppBar position="static" className={props.styles.hideprint}>
     <Toolbar>
       <Typography variant="h6">Buzzword Bingo</Typography>
     </Toolbar>

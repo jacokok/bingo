@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Board } from "../components/board/board";
 import { Config } from "../components/config/config";
 import { Header } from "../components/header";
+import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
+import { createTheme } from "@material-ui/core";
 
 const defaultWords = [
   "Handdoeke",
@@ -80,26 +82,40 @@ export const Boards = () => {
   const [words, setWords] = useState(defaultWords);
   const [preview, setPreview] = useState(false);
   const [boardCount, setBoardCount] = useState(1);
+  const [color, setColor] = useState("#3f51b5");
 
   const boards = [...Array(boardCount)].map((e, i) => {
-    return <Board words={words} />;
+    return <Board key={"boards_" + i} words={words} isBreak={i % 2 != 0} />;
   });
 
-  // const rows = [0, 1, 2, 3, 4].map((value) => {
-  //   return (
-  //     <Row
-  //       key={"row_" + value}
-  //       getRandomWord={getRandomWord}
-  //       centerItem={value == 2}
-  //     />
-  //   );
-  // });
+  const useStyles = makeStyles({
+    hideprint: {
+      [`@media print`]: {
+        display: "none",
+      },
+    },
+  });
+  const styles = useStyles();
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: color,
+      },
+    },
+  });
 
   return (
-    <React.Fragment>
-      <Header />
-      <Config boardCount={boardCount} setBoardCount={setBoardCount} />
+    <ThemeProvider theme={theme}>
+      <Header styles={styles} />
+      <Config
+        boardCount={boardCount}
+        setBoardCount={setBoardCount}
+        styles={styles}
+        color={color}
+        setColor={setColor}
+      />
       {boards}
-    </React.Fragment>
+    </ThemeProvider>
   );
 };

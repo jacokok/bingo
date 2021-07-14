@@ -15,11 +15,12 @@ table.pagebreak {
 
 table thead {
   font-size: 50px;
+  height: 60px;
 }
 
 table td {
   padding: 10px;
   text-align: center;
   width: 150px;
-  height: 70px;
+  height: 60px;
 }
