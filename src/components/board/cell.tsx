@@ -1,31 +1,28 @@
 import React from "react";
-import ChildFriendlyIcon from "@material-ui/icons/ChildFriendly";
-import { Typography } from "@material-ui/core";
+import pdf from "@react-pdf/renderer";
+
+const { Text, View } = pdf;
 
 interface Props {
-  getRandomWord: () => string;
-  centerItem?: boolean;
+  // getRandomWord: () => string;
+  rowNumber: number;
   style: any;
+  getRandomWord: () => string;
 }
 
 export const Cell = (props: Props) => {
-  const rows = [0, 1, 2, 3, 4].map((value) => {
-    return value == 2 && props.centerItem ? (
-      <td key={"iconcell_" + value} className={props.style.td}>
-        <ChildFriendlyIcon
-          key={"icon_" + value}
-          color="primary"
-          fontSize="large"
-        />
-      </td>
+  const cells = [0, 1, 2, 3, 4].map((value) => {
+    return value == 2 && props.rowNumber == 2 ? (
+      // Icon
+      <View key={"cell_" + value} style={props.style.td}>
+        <Text>Bingo</Text>
+      </View>
     ) : (
-      <td key={"cell_" + value} className={props.style.td}>
-        <Typography className={props.style.text}>
-          {props.getRandomWord()}
-        </Typography>
-      </td>
+      <View key={"cell_" + value} style={props.style.td}>
+        <Text>{props.getRandomWord()}</Text>
+      </View>
     );
   });
 
-  return <tr>{rows}</tr>;
+  return <React.Fragment>{cells}</React.Fragment>;
 };

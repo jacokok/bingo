@@ -1,10 +1,12 @@
 import { Paper } from "@material-ui/core";
 import React, { useState } from "react";
-import { Board } from "../components/board/board";
+import { Board } from "../components/board";
 import { Config } from "../components/config/config";
 import { Header } from "../components/header";
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import { createTheme } from "@material-ui/core";
+import pdf from "@react-pdf/renderer";
+const { PDFViewer } = pdf;
 
 const defaultWords = [
   "Handdoeke",
@@ -84,10 +86,6 @@ export const Boards = () => {
   const [boardCount, setBoardCount] = useState(1);
   const [color, setColor] = useState("#3f51b5");
 
-  const boards = [...Array(boardCount)].map((e, i) => {
-    return <Board key={"boards_" + i} words={words} isBreak={i % 2 != 0} />;
-  });
-
   const useStyles = makeStyles({
     hideprint: {
       [`@media print`]: {
@@ -104,7 +102,6 @@ export const Boards = () => {
       },
     },
   });
-
   return (
     <ThemeProvider theme={theme}>
       <Header styles={styles} />
@@ -115,7 +112,7 @@ export const Boards = () => {
         color={color}
         setColor={setColor}
       />
-      {boards}
+      <Board words={words} boardCount={boardCount} />
     </ThemeProvider>
   );
 };

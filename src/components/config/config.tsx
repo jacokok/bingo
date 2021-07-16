@@ -68,6 +68,7 @@ export const Config = (props: Props) => {
             <Switch
               // checked={state.checkedA}
               // onChange={handleChange}
+              color="primary"
               name="checkedA"
             />
           }
