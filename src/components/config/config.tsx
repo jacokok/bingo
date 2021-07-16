@@ -21,6 +21,7 @@ import {
   ColorPalette,
   ColorPicker,
 } from "material-ui-color";
+import { ChildFriendly } from "@material-ui/icons";
 
 interface Props {
   boardCount: number;
@@ -98,6 +99,7 @@ export const Config = (props: Props) => {
         >
           Print
         </Button>
+        <ChildFriendly color="primary" fontSize="large" />
       </CardActions>
     </Card>
   );

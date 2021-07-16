@@ -61,7 +61,9 @@ export const PDFDocument = (props: Props) => {
       paddingBottom: 65,
       paddingHorizontal: 35,
     },
-    table: {},
+    table: {
+      marginBottom: 30,
+    },
     row: {
       flexDirection: "row",
     },
@@ -89,6 +91,7 @@ export const PDFDocument = (props: Props) => {
       border: "2pt  0   0  2pt solid " + props.color,
       fontSize: 10,
       fontFamily: "Roboto",
+      alignContent: "center",
     },
   });
 
@@ -112,7 +115,11 @@ export const PDFDocument = (props: Props) => {
             <Text>O</Text>
           </View>
         </View>
-        <Row style={docStyles} getRandomWord={getRandomWord} />
+        <Row
+          style={docStyles}
+          getRandomWord={getRandomWord}
+          color={props.color}
+        />
       </View>
     );
   };
@@ -125,10 +132,35 @@ export const PDFDocument = (props: Props) => {
     );
   }, []);
 
-  const boards = rows.map((row) => {
+  const boards = rows.map((row: number[][] & number[], i: number) => {
     return (
-      <Page size="A4" style={docStyles.page}>
-        {row.map(() => doc())}
+      <Page key={"page_" + i} size="A4" style={docStyles.page}>
+        {row.map((elem, ind) => (
+          <View key={"page_" + ind} style={docStyles.table}>
+            <View style={docStyles.row}>
+              <View style={docStyles.th}>
+                <Text>B</Text>
+              </View>
+              <View style={docStyles.th}>
+                <Text>I</Text>
+              </View>
+              <View style={docStyles.th}>
+                <Text>N</Text>
+              </View>
+              <View style={docStyles.th}>
+                <Text>G</Text>
+              </View>
+              <View style={docStyles.th}>
+                <Text>O</Text>
+              </View>
+            </View>
+            <Row
+              style={docStyles}
+              getRandomWord={getRandomWord}
+              color={props.color}
+            />
+          </View>
+        ))}
       </Page>
     );
   });

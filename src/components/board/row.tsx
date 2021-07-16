@@ -8,6 +8,7 @@ interface Props {
   // words: Array<string>;
   // boardCount: number;
   style: any;
+  color: string;
   getRandomWord: () => string;
 }
 
@@ -19,6 +20,7 @@ export const Row = (props: Props) => {
           style={props.style}
           rowNumber={value}
           getRandomWord={props.getRandomWord}
+          color={props.color}
         />
       </View>
     );
