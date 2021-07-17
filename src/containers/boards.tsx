@@ -1,12 +1,9 @@
-import { Paper } from "@material-ui/core";
 import React, { useState } from "react";
 import { Board } from "../components/board";
 import { Config } from "../components/config/config";
 import { Header } from "../components/header";
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import { createTheme } from "@material-ui/core";
-import pdf from "@react-pdf/renderer";
-const { PDFViewer } = pdf;
 
 const defaultWords = [
   "Handdoeke",
@@ -106,6 +103,7 @@ export const Boards = () => {
     <ThemeProvider theme={theme}>
       <Header styles={styles} />
       <Config
+        words={words}
         boardCount={boardCount}
         setBoardCount={setBoardCount}
         styles={styles}

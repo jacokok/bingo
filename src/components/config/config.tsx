@@ -1,27 +1,15 @@
 import {
-  AppBar,
-  Button,
   Card,
   CardActions,
   CardContent,
   CardHeader,
-  FormControlLabel,
-  IconButton,
-  Paper,
   Slider,
-  Switch,
-  Toolbar,
   Typography,
 } from "@material-ui/core";
-import React, { useState } from "react";
-import {
-  Color,
-  ColorBox,
-  ColorButton,
-  ColorPalette,
-  ColorPicker,
-} from "material-ui-color";
+import React from "react";
+import { ColorPalette } from "material-ui-color";
 import { ChildFriendly } from "@material-ui/icons";
+import { DownloadButton } from "../board/download-button";
 
 interface Props {
   boardCount: number;
@@ -29,6 +17,7 @@ interface Props {
   styles: any;
   color: string;
   setColor: React.Dispatch<React.SetStateAction<string>>;
+  words: Array<string>;
 }
 
 const palette = {
@@ -52,10 +41,30 @@ function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
   return obj[key];
 }
 
+function debounce<Params extends any[]>(
+  func: (...args: Params) => any,
+  timeout: number
+): (...args: Params) => void {
+  let timer: NodeJS.Timeout;
+  return (...args: Params) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func(...args);
+    }, timeout);
+  };
+}
+
 export const Config = (props: Props) => {
+  console.log("render config");
   const hangleColorChange = (newValue: string) => {
     props.setColor(palette[newValue]);
   };
+
+  const handleSlider = (newvalue: number) => {
+    props.setBoardCount(newvalue);
+  };
+
+  const debouncedTest = debounce(handleSlider, 400);
 
   return (
     <Card
@@ -64,42 +73,32 @@ export const Config = (props: Props) => {
     >
       <CardHeader title="Options" subheader="Change bingo config here" />
       <CardContent>
-        <FormControlLabel
-          control={
-            <Switch
-              // checked={state.checkedA}
-              // onChange={handleChange}
-              color="primary"
-              name="checkedA"
-            />
-          }
-          label="Solid Header"
-        />
-        <ColorPalette palette={palette} onSelect={hangleColorChange} />
         <Typography id="number-slider" gutterBottom>
-          Number of Bingo boards to render
+          Pick colour
+        </Typography>
+        <ColorPalette palette={palette} onSelect={hangleColorChange} />
+        <br />
+        <Typography id="number-slider" gutterBottom>
+          Number of Bingo boards
         </Typography>
         <Slider
           defaultValue={1}
           aria-labelledby="number-slider"
-          valueLabelDisplay="auto"
           min={1}
+          valueLabelDisplay="on"
           onChange={(evt, newvalue) =>
-            props.setBoardCount(
-              Array.isArray(newvalue) ? newvalue[0] : newvalue
-            )
+            debouncedTest(Array.isArray(newvalue) ? newvalue[0] : newvalue)
           }
         />
+        <br />
+        <ChildFriendly color="primary" fontSize="large" />
       </CardContent>
       <CardActions>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => window.print()}
-        >
-          Print
-        </Button>
-        <ChildFriendly color="primary" fontSize="large" />
+        <DownloadButton
+          words={props.words}
+          boardCount={props.boardCount}
+          color={props.color}
+        />
       </CardActions>
     </Card>
   );

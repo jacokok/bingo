@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import pdflib from "@react-pdf/renderer";
-import { Button } from "@material-ui/core";
+import { Button, CircularProgress } from "@material-ui/core";
 import { saveAs } from "file-saver";
 import { PDFDocument } from "./document";
 
@@ -20,10 +20,10 @@ interface Props {
 }
 
 export const DownloadButton = (props: Props) => {
-  console.log("props changed");
+  const [isLoading, setIsLoading] = useState(false);
 
   const downloadPDF = async () => {
-    console.log("dong asldfk changed");
+    setIsLoading(true);
     const asPdf = pdf([] as any);
     const MyDoc = (
       <PDFDocument
@@ -35,12 +35,19 @@ export const DownloadButton = (props: Props) => {
     asPdf.updateContainer(MyDoc);
     const blob = await asPdf.toBlob();
     saveAs(blob, "document.pdf");
+    setIsLoading(false);
   };
   return (
     <React.Fragment>
-      <Button onClick={downloadPDF} variant="contained" color="primary">
+      <Button
+        onClick={downloadPDF}
+        variant="contained"
+        color="primary"
+        disabled={isLoading}
+      >
         Download PDF
       </Button>
+      {isLoading && <CircularProgress />}
     </React.Fragment>
   );
 };

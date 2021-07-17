@@ -1,26 +1,21 @@
 table {
-  margin-bottom: 20px;
-  page-break-inside: avoid !important;
-  background-color: white;
+  margin: 10px auto;
   padding: 10px;
   border-collapse: collapse;
   width: 800px;
   height: 500px;
 }
 
-table.pagebreak {
-  clear: both;
-  page-break-before: always;
-}
-
-table thead {
+table th {
   font-size: 50px;
   height: 60px;
+  border: 2pt solid black;
 }
 
 table td {
-  padding: 10px;
+  font-size: 16px;
   text-align: center;
   width: 150px;
   height: 60px;
+  border: 2pt solid black;
 }

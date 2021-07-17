@@ -40,43 +40,9 @@ export const Board = (props: Props) => {
 
   const classes = useStyles();
 
-  const getProps = async () => {
-    return props;
-  };
-
-  // const rows = [0, 1, 2, 3, 4].map((value) => {
-  //   return (
-  //     <Cell
-  //       key={"row_" + value}
-  //       getRandomWord={getRandomWord}
-  //       centerItem={value == 2}
-  //       style={classes}
-  //     />
-  //   );
-  // });
-
-  // const boards = [...Array(boardCount)].map((e, i) => {
-  //   return <Board key={"boards_" + i} words={words} />;
-  // });
-
-  // Create styles
-
-  // const docRows = [0, 1, 2, 3, 4].map((value) => {
-  //   return (
-  //     <View key={"row_" + value} style={docStyles.td}>
-  //       <Text>{getRandomWord()}</Text>
-  //     </View>
-  //   );
-  // });
-
   return (
     <React.Fragment>
-      <Preview />
-      <DownloadButton
-        words={props.words}
-        boardCount={props.boardCount}
-        color={theme.palette.primary.main}
-      />
+      <Preview words={props.words} color={theme.palette.primary.main} />
     </React.Fragment>
   );
 };
