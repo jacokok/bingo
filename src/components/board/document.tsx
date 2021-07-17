@@ -95,35 +95,6 @@ export const PDFDocument = (props: Props) => {
     },
   });
 
-  const doc = () => {
-    return (
-      <View style={docStyles.table}>
-        <View style={docStyles.row}>
-          <View style={docStyles.th}>
-            <Text>B</Text>
-          </View>
-          <View style={docStyles.th}>
-            <Text>I</Text>
-          </View>
-          <View style={docStyles.th}>
-            <Text>N</Text>
-          </View>
-          <View style={docStyles.th}>
-            <Text>G</Text>
-          </View>
-          <View style={docStyles.th}>
-            <Text>O</Text>
-          </View>
-        </View>
-        <Row
-          style={docStyles}
-          getRandomWord={getRandomWord}
-          color={props.color}
-        />
-      </View>
-    );
-  };
-
   const rows = [...Array(props.boardCount)].reduce(function (rows, key, index) {
     return (
       (index % 2 == 0
@@ -165,23 +136,12 @@ export const PDFDocument = (props: Props) => {
     );
   });
 
-  // rows.map(row => (
-  //   <Row >
-  //   { row.map(col => (<Col>{col}</Col>)) }
-  //   </Row>
-  // ))
-
-  // const boards = [...Array(props.boardCount)].map((e, i) => {
-  //   return (
-  //     <Page size="A4" style={docStyles.page}>
-  //       {doc()}
-  //     </Page>
-  //   );
-  // });
-
   return (
-    <PDFViewer height={700} style={{ width: "100%" }}>
-      <Document>{boards}</Document>
-    </PDFViewer>
+    <Document>{boards}</Document>
+    // <PDFDownloadLink document={<Document>{boards}</Document>}>
+    //   {({ blob, url, loading, error }) =>
+    //     loading ? "Loading document..." : "Download now!"
+    //   }
+    // </PDFDownloadLink>
   );
 };

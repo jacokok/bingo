@@ -6,10 +6,13 @@ import { useTheme } from "@material-ui/core/styles";
 
 import { Preview } from "./preview";
 import { PDFDocument } from "./document";
+import { DownloadButton } from "./download-button";
 
 interface Props {
   words: Array<string>;
   boardCount: number;
+  setIsPreview: React.Dispatch<React.SetStateAction<boolean>>;
+  isPreview: boolean;
 }
 
 export const Board = (props: Props) => {
@@ -37,6 +40,10 @@ export const Board = (props: Props) => {
 
   const classes = useStyles();
 
+  const getProps = async () => {
+    return props;
+  };
+
   // const rows = [0, 1, 2, 3, 4].map((value) => {
   //   return (
   //     <Cell
@@ -63,10 +70,13 @@ export const Board = (props: Props) => {
   // });
 
   return (
-    <PDFDocument
-      words={props.words}
-      boardCount={props.boardCount}
-      color={theme.palette.primary.main}
-    />
+    <React.Fragment>
+      <Preview />
+      <DownloadButton
+        words={props.words}
+        boardCount={props.boardCount}
+        color={theme.palette.primary.main}
+      />
+    </React.Fragment>
   );
 };

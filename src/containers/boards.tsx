@@ -82,7 +82,7 @@ const defaultWords = [
 
 export const Boards = () => {
   const [words, setWords] = useState(defaultWords);
-  const [preview, setPreview] = useState(false);
+  const [isPreview, setIsPreview] = useState(false);
   const [boardCount, setBoardCount] = useState(1);
   const [color, setColor] = useState("#3f51b5");
 
@@ -112,7 +112,12 @@ export const Boards = () => {
         color={color}
         setColor={setColor}
       />
-      <Board words={words} boardCount={boardCount} />
+      <Board
+        words={words}
+        boardCount={boardCount}
+        setIsPreview={setIsPreview}
+        isPreview={isPreview}
+      />
     </ThemeProvider>
   );
 };
