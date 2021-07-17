@@ -10,6 +10,7 @@ import React from "react";
 import { ColorPalette } from "material-ui-color";
 import { ChildFriendly } from "@material-ui/icons";
 import { DownloadButton } from "../board/download-button";
+import ScrollDialog from "./scroll-dialog";
 
 interface Props {
   boardCount: number;
@@ -92,6 +93,8 @@ export const Config = (props: Props) => {
         />
         <br />
         <ChildFriendly color="primary" fontSize="large" />
+        <br />
+        <ScrollDialog />
       </CardContent>
       <CardActions>
         <DownloadButton
