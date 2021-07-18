@@ -6,11 +6,28 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { TextField } from "@material-ui/core";
 
-export default function ScrollDialog() {
+interface Props {
+  words: Array<string>;
+  onChange: React.Dispatch<React.SetStateAction<string[]>>;
+}
+
+export const Words = (props: Props) => {
   const [open, setOpen] = React.useState(false);
+
+  const [tempWords, setTempWords] = React.useState(props.words.join("\n"));
 
   const handleClickOpen = () => {
     setOpen(true);
+  };
+
+  const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTempWords(event.target.value);
+  };
+
+  const handleDone = () => {
+    console.log(tempWords);
+    props.onChange(tempWords.split("\n"));
+    setOpen(false);
   };
 
   const handleClose = () => {
@@ -28,7 +45,7 @@ export default function ScrollDialog() {
   }, [open]);
 
   return (
-    <div>
+    <React.Fragment>
       <Button variant="contained" color="primary" onClick={handleClickOpen}>
         Update Words
       </Button>
@@ -44,8 +61,9 @@ export default function ScrollDialog() {
           <TextField
             label="Words"
             multiline
-            defaultValue="Default Value"
+            defaultValue={tempWords}
             variant="outlined"
+            onChange={handleTextChange}
             style={{ width: "100%" }}
           />
         </DialogContent>
@@ -53,11 +71,11 @@ export default function ScrollDialog() {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleDone} color="primary">
             Done
           </Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </React.Fragment>
   );
-}
+};

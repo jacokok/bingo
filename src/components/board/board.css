@@ -1,21 +1,19 @@
 table {
-  margin: 10px auto;
-  padding: 10px;
+  margin: 20px auto;
   border-collapse: collapse;
-  width: 800px;
-  height: 500px;
 }
 
 table th {
-  font-size: 50px;
+  font-size: 22pt;
   height: 60px;
   border: 2pt solid black;
+  width: 20%;
 }
 
 table td {
-  font-size: 16px;
+  font-size: 12pt;
   text-align: center;
-  width: 150px;
   height: 60px;
   border: 2pt solid black;
+  width: 20%;
 }

@@ -102,20 +102,23 @@ export const Boards = () => {
   return (
     <ThemeProvider theme={theme}>
       <Header styles={styles} />
-      <Config
-        words={words}
-        boardCount={boardCount}
-        setBoardCount={setBoardCount}
-        styles={styles}
-        color={color}
-        setColor={setColor}
-      />
-      <Board
-        words={words}
-        boardCount={boardCount}
-        setIsPreview={setIsPreview}
-        isPreview={isPreview}
-      />
+      <div style={{ margin: 20 }}>
+        <Config
+          words={words}
+          setWords={setWords}
+          boardCount={boardCount}
+          setBoardCount={setBoardCount}
+          styles={styles}
+          color={color}
+          setColor={setColor}
+        />
+        <Board
+          words={words}
+          boardCount={boardCount}
+          setIsPreview={setIsPreview}
+          isPreview={isPreview}
+        />
+      </div>
     </ThemeProvider>
   );
 };

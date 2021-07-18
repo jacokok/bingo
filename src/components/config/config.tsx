@@ -3,6 +3,7 @@ import {
   CardActions,
   CardContent,
   CardHeader,
+  Container,
   Slider,
   Typography,
 } from "@material-ui/core";
@@ -10,7 +11,8 @@ import React from "react";
 import { ColorPalette } from "material-ui-color";
 import { ChildFriendly } from "@material-ui/icons";
 import { DownloadButton } from "../board/download-button";
-import ScrollDialog from "./scroll-dialog";
+import { Words } from "./Words";
+import { BabyIcon, FlowerIcon } from "../Icons";
 
 interface Props {
   boardCount: number;
@@ -19,6 +21,7 @@ interface Props {
   color: string;
   setColor: React.Dispatch<React.SetStateAction<string>>;
   words: Array<string>;
+  setWords: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 const palette = {
@@ -68,41 +71,41 @@ export const Config = (props: Props) => {
   const debouncedTest = debounce(handleSlider, 400);
 
   return (
-    <Card
-      style={{ padding: 20, margin: "20px auto", maxWidth: 700 }}
-      className={props.styles.hideprint}
-    >
-      <CardHeader title="Options" subheader="Change bingo config here" />
-      <CardContent>
-        <Typography id="number-slider" gutterBottom>
-          Pick colour
-        </Typography>
-        <ColorPalette palette={palette} onSelect={hangleColorChange} />
-        <br />
-        <Typography id="number-slider" gutterBottom>
-          Number of Bingo boards
-        </Typography>
-        <Slider
-          defaultValue={1}
-          aria-labelledby="number-slider"
-          min={1}
-          valueLabelDisplay="on"
-          onChange={(evt, newvalue) =>
-            debouncedTest(Array.isArray(newvalue) ? newvalue[0] : newvalue)
-          }
-        />
-        <br />
-        <ChildFriendly color="primary" fontSize="large" />
-        <br />
-        <ScrollDialog />
-      </CardContent>
-      <CardActions>
-        <DownloadButton
-          words={props.words}
-          boardCount={props.boardCount}
-          color={props.color}
-        />
-      </CardActions>
-    </Card>
+    <Container maxWidth="sm">
+      <Card className={props.styles.hideprint}>
+        <CardHeader title="Options" subheader="Change bingo config here" />
+        <CardContent>
+          <Typography id="number-slider" gutterBottom>
+            Pick colour
+          </Typography>
+          <ColorPalette palette={palette} onSelect={hangleColorChange} />
+          <br />
+          <Typography id="number-slider" gutterBottom>
+            Number of Bingo boards
+          </Typography>
+          <Slider
+            defaultValue={1}
+            aria-labelledby="number-slider"
+            min={1}
+            valueLabelDisplay="on"
+            onChange={(evt, newvalue) =>
+              debouncedTest(Array.isArray(newvalue) ? newvalue[0] : newvalue)
+            }
+          />
+          <br />
+          <BabyIcon color="red" isPDF={false} />
+          <FlowerIcon color="red" isPDF={false} />
+          <br />
+          <Words words={props.words} onChange={props.setWords} />
+        </CardContent>
+        <CardActions>
+          <DownloadButton
+            words={props.words}
+            boardCount={props.boardCount}
+            color={props.color}
+          />
+        </CardActions>
+      </Card>
+    </Container>
   );
 };
