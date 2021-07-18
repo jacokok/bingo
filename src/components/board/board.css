@@ -1,6 +1,7 @@
 table {
   margin: 20px auto;
   border-collapse: collapse;
+  width: 100%;
 }
 
 table th {
@@ -11,9 +12,10 @@ table th {
 }
 
 table td {
-  font-size: 12pt;
+  font-size: 10pt;
   text-align: center;
   height: 60px;
   border: 2pt solid black;
   width: 20%;
+  overflow: hidden;
 }

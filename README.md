@@ -13,7 +13,11 @@ npm run dev
 
 ## Todo
 
-- Edit words
-- New button to open full screen dialog
-- Change text and words
-- Only when pressing done setWords to update state
+- New car per option
+- Number them 1 - 4
+- 1 Pick COlor
+- 2 Number of BOards
+- 3 Icon
+- 4 Update Words
+- 5 Download PDF
+- Local Storage save words

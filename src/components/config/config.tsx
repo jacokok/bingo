@@ -12,7 +12,13 @@ import { ColorPalette } from "material-ui-color";
 import { ChildFriendly } from "@material-ui/icons";
 import { DownloadButton } from "../board/download-button";
 import { Words } from "./Words";
-import { BabyIcon, FlowerIcon } from "../Icons";
+import {
+  BabyIcon,
+  FlowerIcon,
+  BingoIcon,
+  CrossIcon,
+  CoffeeIcon,
+} from "../Icons";
 
 interface Props {
   boardCount: number;
@@ -95,6 +101,9 @@ export const Config = (props: Props) => {
           <br />
           <BabyIcon color="red" isPDF={false} />
           <FlowerIcon color="red" isPDF={false} />
+          <BingoIcon color="red" isPDF={false} />
+          <CrossIcon color="red" isPDF={false} />
+          <CoffeeIcon color="red" isPDF={false} />
           <br />
           <Words words={props.words} onChange={props.setWords} />
         </CardContent>
