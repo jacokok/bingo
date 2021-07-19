@@ -2,7 +2,7 @@ import React from "react";
 import CSS from "csstype";
 import "./board.css";
 import { ChildFriendly } from "@material-ui/icons";
-import { Container } from "@material-ui/core";
+import { Container, Grid } from "@material-ui/core";
 import { BabyIcon } from "../Icons/BabyIcon";
 
 interface Props {
@@ -38,7 +38,7 @@ export const Preview = (props: Props) => {
   };
 
   return (
-    <Container maxWidth="sm">
+    <Grid item sm={5} xs={12} spacing={3} style={{ flexGrow: 1, margin: 20 }}>
       <table>
         <thead>
           <tr>
@@ -87,6 +87,6 @@ export const Preview = (props: Props) => {
           </tr>
         </thead>
       </table>
-    </Container>
+    </Grid>
   );
 };

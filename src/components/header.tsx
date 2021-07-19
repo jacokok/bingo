@@ -1,18 +1,8 @@
-import {
-  AppBar,
-  Button,
-  IconButton,
-  Toolbar,
-  Typography,
-} from "@material-ui/core";
-import React, { useState } from "react";
+import { AppBar, Toolbar, Typography } from "@material-ui/core";
+import React from "react";
 
-interface Props {
-  styles: any;
-}
-
-export const Header = (props: Props) => (
-  <AppBar position="static" className={props.styles.hideprint}>
+export const Header = () => (
+  <AppBar position="static">
     <Toolbar>
       <Typography variant="h6">Buzzword Bingo</Typography>
     </Toolbar>

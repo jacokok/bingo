@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Board } from "../components/board";
 import { Config } from "../components/config/config";
 import { Header } from "../components/header";
-import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
-import { createTheme } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/core/styles";
+import { createTheme, Grid } from "@material-ui/core";
+import { IconType } from "../components/Icons";
 
 const defaultWords = [
   "Handdoeke",
@@ -79,18 +80,9 @@ const defaultWords = [
 
 export const Boards = () => {
   const [words, setWords] = useState(defaultWords);
-  const [isPreview, setIsPreview] = useState(false);
   const [boardCount, setBoardCount] = useState(1);
   const [color, setColor] = useState("#3f51b5");
-
-  const useStyles = makeStyles({
-    hideprint: {
-      [`@media print`]: {
-        display: "none",
-      },
-    },
-  });
-  const styles = useStyles();
+  const [icon, setIcon] = useState<IconType>("bingo");
 
   const theme = createTheme({
     palette: {
@@ -101,24 +93,20 @@ export const Boards = () => {
   });
   return (
     <ThemeProvider theme={theme}>
-      <Header styles={styles} />
-      <div style={{ margin: 20 }}>
+      <Header />
+      <Grid container justifyContent="center">
         <Config
           words={words}
           setWords={setWords}
           boardCount={boardCount}
           setBoardCount={setBoardCount}
-          styles={styles}
           color={color}
           setColor={setColor}
+          icon={icon}
+          setIcon={setIcon}
         />
-        <Board
-          words={words}
-          boardCount={boardCount}
-          setIsPreview={setIsPreview}
-          isPreview={isPreview}
-        />
-      </div>
+        <Board words={words} boardCount={boardCount} />
+      </Grid>
     </ThemeProvider>
   );
 };

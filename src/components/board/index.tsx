@@ -11,8 +11,6 @@ import { DownloadButton } from "./download-button";
 interface Props {
   words: Array<string>;
   boardCount: number;
-  setIsPreview: React.Dispatch<React.SetStateAction<boolean>>;
-  isPreview: boolean;
 }
 
 export const Board = (props: Props) => {

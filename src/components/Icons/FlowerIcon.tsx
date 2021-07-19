@@ -2,14 +2,27 @@ import React from "react";
 import pdf from "@react-pdf/renderer";
 // import { FilterVintageIcon } from "@material-ui/icons";
 import FilterVintageIcon from "@material-ui/icons/FilterVintage";
+import IconButton from "@material-ui/core/IconButton";
+import { IconType } from ".";
 const { Svg, G, Path } = pdf;
+import CSS from "csstype";
 
 interface Props {
   color: string;
   isPDF: boolean;
+  isSelected: boolean;
+  setIcon: React.Dispatch<React.SetStateAction<IconType>>;
 }
 
 export const FlowerIcon = (props: Props) => {
+  const styles: CSS.Properties = {
+    borderColor: props.color,
+    borderStyle: "solid",
+    borderWidth: props.isSelected ? "2pt" : 0,
+    fontSize: "50px",
+    cursor: "pointer",
+  };
+
   return props.isPDF ? (
     <Svg viewBox="0 0 24 24">
       <G fill={props.color}>
@@ -17,6 +30,12 @@ export const FlowerIcon = (props: Props) => {
       </G>
     </Svg>
   ) : (
-    <FilterVintageIcon color="primary" style={{ fontSize: 50 }} />
+    <IconButton
+      color="primary"
+      defaultChecked={true}
+      onClick={() => props.setIcon("flower")}
+    >
+      <FilterVintageIcon style={{ fontSize: 50 }} />
+    </IconButton>
   );
 };

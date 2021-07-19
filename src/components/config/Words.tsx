@@ -4,7 +4,16 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { TextField } from "@material-ui/core";
+import {
+  AppBar,
+  Card,
+  CardContent,
+  CardHeader,
+  IconButton,
+  TextField,
+  Toolbar,
+  Typography,
+} from "@material-ui/core";
 
 interface Props {
   words: Array<string>;
@@ -46,32 +55,42 @@ export const Words = (props: Props) => {
 
   return (
     <React.Fragment>
-      <Button variant="contained" color="primary" onClick={handleClickOpen}>
-        Update Words
-      </Button>
+      <Card style={{ marginBottom: 20 }}>
+        <CardHeader subheader="4. Update words" />
+        <CardContent>
+          <Button variant="contained" color="primary" onClick={handleClickOpen}>
+            Update Words
+          </Button>
+        </CardContent>
+      </Card>
       <Dialog
         open={open}
+        maxWidth="xs"
         onClose={handleClose}
         scroll="paper"
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
+        color="primary"
       >
-        <DialogTitle id="scroll-dialog-title">Edit Words</DialogTitle>
-        <DialogContent dividers={true} style={{ minWidth: 500 }}>
+        <DialogTitle id="scroll-dialog-title" color="primary">
+          Edit Words
+        </DialogTitle>
+        <DialogContent dividers={true} style={{ width: 600 }}>
           <TextField
             label="Words"
             multiline
             defaultValue={tempWords}
             variant="outlined"
             onChange={handleTextChange}
-            style={{ width: "100%" }}
+            style={{ width: 600 }}
+            // style={{ width: "100%" }}
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleDone} color="primary">
+          <Button variant="contained" onClick={handleDone} color="primary">
             Done
           </Button>
         </DialogActions>
