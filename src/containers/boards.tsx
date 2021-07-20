@@ -3,7 +3,7 @@ import { Board } from "../components/board";
 import { Config } from "../components/config/config";
 import { Header } from "../components/header";
 import { ThemeProvider } from "@material-ui/core/styles";
-import { createTheme, Grid } from "@material-ui/core";
+import { createTheme, Grid, Paper } from "@material-ui/core";
 import { IconType } from "../components/Icons";
 
 const defaultWords = [
@@ -82,10 +82,12 @@ export const Boards = () => {
   const [words, setWords] = useState(defaultWords);
   const [boardCount, setBoardCount] = useState(10);
   const [color, setColor] = useState("#3f51b5");
+  const [isDark, setIsDark] = useState(false);
   const [icon, setIcon] = useState<IconType>("bingo");
 
   const theme = createTheme({
     palette: {
+      type: isDark ? "dark" : "light",
       primary: {
         main: color,
       },
@@ -93,20 +95,23 @@ export const Boards = () => {
   });
   return (
     <ThemeProvider theme={theme}>
-      <Header />
-      <Grid container justifyContent="center">
-        <Config
-          words={words}
-          setWords={setWords}
-          boardCount={boardCount}
-          setBoardCount={setBoardCount}
-          color={color}
-          setColor={setColor}
-          icon={icon}
-          setIcon={setIcon}
-        />
-        <Board words={words} boardCount={boardCount} icon={icon} />
-      </Grid>
+      <Paper style={{ background: theme.palette.background.default }}>
+        <Header isDark={isDark} setIsDark={setIsDark} />
+
+        <Grid container justifyContent="center">
+          <Config
+            words={words}
+            setWords={setWords}
+            boardCount={boardCount}
+            setBoardCount={setBoardCount}
+            color={color}
+            setColor={setColor}
+            icon={icon}
+            setIcon={setIcon}
+          />
+          <Board words={words} boardCount={boardCount} icon={icon} />
+        </Grid>
+      </Paper>
     </ThemeProvider>
   );
 };

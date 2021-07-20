@@ -1,9 +1,6 @@
 import React from "react";
-import CSS from "csstype";
 import "./board.css";
-import { ChildFriendly } from "@material-ui/icons";
-import { Container, Grid } from "@material-ui/core";
-import { BabyIcon } from "../Icons/BabyIcon";
+import { Grid } from "@material-ui/core";
 import { IconType, Icon } from "../Icons";
 
 interface Props {

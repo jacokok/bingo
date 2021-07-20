@@ -1,6 +1,6 @@
 import React from "react";
 import { IconType, icons } from "../Icons/index";
-import { Button, ButtonGroup } from "@material-ui/core";
+import { Button, ButtonGroup, useTheme } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { IconPickerItem } from "./IconPickerItem";
 
@@ -11,9 +11,10 @@ interface Props {
 }
 
 export const IconPicker = (props: Props) => {
+  const theme = useTheme();
   const useStyles = makeStyles({
     iconButton: {
-      backgroundColor: "white",
+      backgroundColor: theme.palette.background.default,
       color: props.color,
     },
     activeIconButton: {

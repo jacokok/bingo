@@ -4,6 +4,7 @@ import { Button, CircularProgress } from "@material-ui/core";
 import { saveAs } from "file-saver";
 import { PDFDocument } from "./Document";
 import { IconType } from "../Icons";
+import { debounce } from "../../utils/utils";
 
 const { pdf } = pdflib;
 
@@ -16,6 +17,11 @@ interface Props {
 
 export const DownloadButton = (props: Props) => {
   const [isLoading, setIsLoading] = useState(false);
+
+  const download = async () => {
+    setIsLoading(true);
+    await downloadPDF();
+  };
 
   const downloadPDF = async () => {
     setIsLoading(true);
@@ -33,17 +39,23 @@ export const DownloadButton = (props: Props) => {
     saveAs(blob, "document.pdf");
     setIsLoading(false);
   };
+
+  const deboucnedDownloadPDF = debounce(downloadPDF, 100);
+
   return (
     <React.Fragment>
-      <Button
-        onClick={downloadPDF}
-        variant="contained"
-        color="primary"
-        disabled={isLoading}
-      >
-        Download PDF
-      </Button>
-      {isLoading && <CircularProgress />}
+      {isLoading ? (
+        <CircularProgress />
+      ) : (
+        <Button
+          onClick={download}
+          variant="contained"
+          color="primary"
+          disabled={isLoading}
+        >
+          Download PDF
+        </Button>
+      )}
     </React.Fragment>
   );
 };
