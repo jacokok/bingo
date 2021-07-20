@@ -20,7 +20,7 @@ interface Props {
 
 export const Config = (props: Props) => {
   return (
-    <Grid item sm={6} xs={12} spacing={3} style={{ flexGrow: 1, margin: 20 }}>
+    <Grid item sm={6} xs={12} style={{ flexGrow: 1, margin: 20 }}>
       <PickColour setColor={props.setColor} />
       <BoardsNumber setBoardCount={props.setBoardCount} />
       <ChooseIcon
@@ -33,6 +33,7 @@ export const Config = (props: Props) => {
         words={props.words}
         boardCount={props.boardCount}
         color={props.color}
+        icon={props.icon}
       />
     </Grid>
   );

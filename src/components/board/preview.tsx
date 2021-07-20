@@ -4,10 +4,12 @@ import "./board.css";
 import { ChildFriendly } from "@material-ui/icons";
 import { Container, Grid } from "@material-ui/core";
 import { BabyIcon } from "../Icons/BabyIcon";
+import { IconType, Icon } from "../Icons";
 
 interface Props {
   words: Array<string>;
   color: string;
+  icon: IconType;
 }
 
 export const Preview = (props: Props) => {
@@ -32,13 +34,13 @@ export const Preview = (props: Props) => {
     return false;
   };
 
-  const td: CSS.Properties = {
+  const td: any = {
     borderColor: props.color,
     color: props.color,
   };
 
   return (
-    <Grid item sm={5} xs={12} spacing={3} style={{ flexGrow: 1, margin: 20 }}>
+    <Grid item sm={5} xs={12} style={{ flexGrow: 1, margin: 20 }}>
       <table>
         <thead>
           <tr>
@@ -66,7 +68,12 @@ export const Preview = (props: Props) => {
             <td style={td}>{getRandomWord()}</td>
             <td style={td}>{getRandomWord()}</td>
             <td style={td}>
-              <BabyIcon color="red" isPDF={false} />
+              <Icon
+                icon={props.icon}
+                color={props.color}
+                isPDF={false}
+                style={{ fontSize: 45 }}
+              />
             </td>
             <td style={td}>{getRandomWord()}</td>
             <td style={td}>{getRandomWord()}</td>

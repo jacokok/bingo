@@ -2,21 +2,16 @@ import React, { useState } from "react";
 import pdflib from "@react-pdf/renderer";
 import { Button, CircularProgress } from "@material-ui/core";
 import { saveAs } from "file-saver";
-import { PDFDocument } from "./document";
+import { PDFDocument } from "./Document";
+import { IconType } from "../Icons";
 
 const { pdf } = pdflib;
-
-interface ParentProps {
-  words: Array<string>;
-  boardCount: number;
-  setIsPreview: React.Dispatch<React.SetStateAction<boolean>>;
-  isPreview: boolean;
-}
 
 interface Props {
   words: Array<string>;
   boardCount: number;
   color: string;
+  icon: IconType;
 }
 
 export const DownloadButton = (props: Props) => {
@@ -30,6 +25,7 @@ export const DownloadButton = (props: Props) => {
         words={props.words}
         boardCount={props.boardCount}
         color={props.color}
+        icon={props.icon}
       />
     );
     asPdf.updateContainer(MyDoc);

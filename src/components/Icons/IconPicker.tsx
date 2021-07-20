@@ -14,6 +14,7 @@ export const IconPicker = (props: Props) => {
   const useStyles = makeStyles({
     iconButton: {
       backgroundColor: "white",
+      color: props.color,
     },
     activeIconButton: {
       backgroundColor: props.color,

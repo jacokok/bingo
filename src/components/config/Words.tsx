@@ -4,6 +4,8 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import { makeStyles } from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
 import {
   AppBar,
   Card,
@@ -22,7 +24,6 @@ interface Props {
 
 export const Words = (props: Props) => {
   const [open, setOpen] = React.useState(false);
-
   const [tempWords, setTempWords] = React.useState(props.words.join("\n"));
 
   const handleClickOpen = () => {
@@ -53,6 +54,15 @@ export const Words = (props: Props) => {
     }
   }, [open]);
 
+  const theme = useTheme();
+  const useStyles = makeStyles({
+    root: {
+      background: theme.palette.primary.main,
+      color: theme.palette.primary.contrastText,
+    },
+  });
+  const classes = useStyles();
+
   return (
     <React.Fragment>
       <Card style={{ marginBottom: 20 }}>
@@ -71,19 +81,19 @@ export const Words = (props: Props) => {
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
         color="primary"
+        fullWidth={true}
       >
-        <DialogTitle id="scroll-dialog-title" color="primary">
+        <DialogTitle id="scroll-dialog-title" className={classes.root}>
           Edit Words
         </DialogTitle>
-        <DialogContent dividers={true} style={{ width: 600 }}>
+        <DialogContent dividers={true}>
           <TextField
             label="Words"
             multiline
             defaultValue={tempWords}
             variant="outlined"
             onChange={handleTextChange}
-            style={{ width: 600 }}
-            // style={{ width: "100%" }}
+            style={{ width: "100%" }}
           />
         </DialogContent>
         <DialogActions>

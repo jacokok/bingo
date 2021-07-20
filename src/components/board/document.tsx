@@ -3,7 +3,8 @@ import pdf from "@react-pdf/renderer";
 
 import Roboto from "../../fonts/Roboto-Regular.ttf";
 import RobotoBold from "../../fonts/Roboto-Bold.ttf";
-import { Row } from "./row";
+import { Row } from "./Row";
+import { IconType } from "../Icons";
 
 const {
   Page,
@@ -20,6 +21,7 @@ interface Props {
   color: string;
   words: Array<string>;
   boardCount: number;
+  icon: IconType;
 }
 
 Font.register({
@@ -129,6 +131,7 @@ export const PDFDocument = (props: Props) => {
               style={docStyles}
               getRandomWord={getRandomWord}
               color={props.color}
+              icon={props.icon}
             />
           </View>
         ))}

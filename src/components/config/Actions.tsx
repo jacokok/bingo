@@ -6,12 +6,14 @@ import {
   CardActions,
 } from "@material-ui/core";
 import React from "react";
-import { DownloadButton } from "../board/download-button";
+import { DownloadButton } from "../board/DownloadButton";
+import { IconType } from "../Icons";
 
 interface Props {
   words: Array<string>;
   boardCount: number;
   color: string;
+  icon: IconType;
 }
 
 export const Actions = (props: Props) => {
@@ -23,6 +25,7 @@ export const Actions = (props: Props) => {
           words={props.words}
           boardCount={props.boardCount}
           color={props.color}
+          icon={props.icon}
         />
       </CardContent>
     </Card>

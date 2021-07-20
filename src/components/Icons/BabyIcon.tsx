@@ -6,6 +6,7 @@ const { Svg, G, Path } = pdf;
 interface Props {
   color: string;
   isPDF: boolean;
+  style?: any;
 }
 
 export const BabyIcon = (props: Props) => {
@@ -16,6 +17,6 @@ export const BabyIcon = (props: Props) => {
       </G>
     </Svg>
   ) : (
-    <ChildFriendly color="primary" style={{ fontSize: 50 }} />
+    <ChildFriendly style={{ fontSize: 30, ...props.style }} />
   );
 };

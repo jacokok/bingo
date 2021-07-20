@@ -105,7 +105,7 @@ export const Boards = () => {
           icon={icon}
           setIcon={setIcon}
         />
-        <Board words={words} boardCount={boardCount} />
+        <Board words={words} boardCount={boardCount} icon={icon} />
       </Grid>
     </ThemeProvider>
   );

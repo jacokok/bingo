@@ -1,15 +1,15 @@
 import React from "react";
 import pdf from "@react-pdf/renderer";
-import { Cell } from "./cell";
+import { Cell } from "./Cell";
+import { IconType } from "../Icons";
 
 const { Text, View } = pdf;
 
 interface Props {
-  // words: Array<string>;
-  // boardCount: number;
   style: any;
   color: string;
   getRandomWord: () => string;
+  icon: IconType;
 }
 
 export const Row = (props: Props) => {
@@ -21,6 +21,7 @@ export const Row = (props: Props) => {
           rowNumber={value}
           getRandomWord={props.getRandomWord}
           color={props.color}
+          icon={props.icon}
         />
       </View>
     );
