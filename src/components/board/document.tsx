@@ -6,16 +6,7 @@ import RobotoBold from "../../fonts/Roboto-Bold.ttf";
 import { Row } from "./Row";
 import { IconType } from "../Icons";
 
-const {
-  Page,
-  Text,
-  View,
-  Document,
-  StyleSheet,
-  PDFViewer,
-  PDFDownloadLink,
-  Font,
-} = pdf;
+const { Page, Text, View, Document, StyleSheet, Font } = pdf;
 
 interface Props {
   color: string;
@@ -139,12 +130,5 @@ export const PDFDocument = (props: Props) => {
     );
   });
 
-  return (
-    <Document>{boards}</Document>
-    // <PDFDownloadLink document={<Document>{boards}</Document>}>
-    //   {({ blob, url, loading, error }) =>
-    //     loading ? "Loading document..." : "Download now!"
-    //   }
-    // </PDFDownloadLink>
-  );
+  return <Document>{boards}</Document>;
 };

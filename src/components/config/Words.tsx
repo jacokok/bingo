@@ -6,16 +6,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/core/styles";
-import {
-  AppBar,
-  Card,
-  CardContent,
-  CardHeader,
-  IconButton,
-  TextField,
-  Toolbar,
-  Typography,
-} from "@material-ui/core";
+import { Card, CardContent, CardHeader, TextField } from "@material-ui/core";
 
 interface Props {
   words: Array<string>;
@@ -35,7 +26,6 @@ export const Words = (props: Props) => {
   };
 
   const handleDone = () => {
-    console.log(tempWords);
     props.onChange(tempWords.split("\n"));
     setOpen(false);
   };

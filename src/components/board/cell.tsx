@@ -1,12 +1,10 @@
 import React from "react";
 import pdf from "@react-pdf/renderer";
-import { ChildFriendly } from "@material-ui/icons";
 import { Icon, IconType } from "../Icons";
 
-const { Text, View, Svg, G, Path } = pdf;
+const { Text, View } = pdf;
 
 interface Props {
-  // getRandomWord: () => string;
   rowNumber: number;
   style: any;
   color: string;

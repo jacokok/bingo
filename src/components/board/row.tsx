@@ -3,7 +3,7 @@ import pdf from "@react-pdf/renderer";
 import { Cell } from "./Cell";
 import { IconType } from "../Icons";
 
-const { Text, View } = pdf;
+const { View } = pdf;
 
 interface Props {
   style: any;

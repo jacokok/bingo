@@ -1,10 +1,4 @@
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  Button,
-  CardActions,
-} from "@material-ui/core";
+import { Card, CardHeader, CardContent } from "@material-ui/core";
 import React from "react";
 import { DownloadButton } from "../board/DownloadButton";
 import { IconType } from "../Icons";

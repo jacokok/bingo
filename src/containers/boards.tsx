@@ -80,7 +80,7 @@ const defaultWords = [
 
 export const Boards = () => {
   const [words, setWords] = useState(defaultWords);
-  const [boardCount, setBoardCount] = useState(1);
+  const [boardCount, setBoardCount] = useState(10);
   const [color, setColor] = useState("#3f51b5");
   const [icon, setIcon] = useState<IconType>("bingo");
 
