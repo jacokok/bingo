@@ -3,6 +3,7 @@ import React from "react";
 import { debounce } from "../../utils/utils";
 
 interface Props {
+  boardCount: number;
   setBoardCount: React.Dispatch<React.SetStateAction<number>>;
 }
 
@@ -18,7 +19,8 @@ export const BoardsNumber = (props: Props) => {
       <CardHeader subheader="2. Number of Bingo's to create" />
       <CardContent>
         <Slider
-          defaultValue={10}
+          key={`slider-${props.boardCount}`}
+          defaultValue={props.boardCount}
           aria-labelledby="number-slider"
           min={1}
           valueLabelDisplay="on"

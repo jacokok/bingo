@@ -5,6 +5,7 @@ import { Header } from "../components/header";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { createTheme, Grid, Paper } from "@material-ui/core";
 import { IconType } from "../components/Icons";
+import { useLocalStorage } from "../hooks/localstorage";
 
 const defaultWords = [
   "Handdoeke",
@@ -79,11 +80,11 @@ const defaultWords = [
 ];
 
 export const Boards = () => {
-  const [words, setWords] = useState(defaultWords);
-  const [boardCount, setBoardCount] = useState(10);
-  const [color, setColor] = useState("#3f51b5");
-  const [isDark, setIsDark] = useState(false);
-  const [icon, setIcon] = useState<IconType>("bingo");
+  const [words, setWords] = useLocalStorage("words", defaultWords);
+  const [boardCount, setBoardCount] = useLocalStorage("boardCount", 10);
+  const [color, setColor] = useLocalStorage("color", "#3f51b5");
+  const [isDark, setIsDark] = useLocalStorage("isDark", false);
+  const [icon, setIcon] = useLocalStorage<IconType>("icon", "bingo");
 
   const theme = createTheme({
     palette: {

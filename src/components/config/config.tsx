@@ -22,7 +22,10 @@ export const Config = (props: Props) => {
   return (
     <Grid item sm={6} xs={12} style={{ flexGrow: 1, margin: 20 }}>
       <PickColour setColor={props.setColor} />
-      <BoardsNumber setBoardCount={props.setBoardCount} />
+      <BoardsNumber
+        setBoardCount={props.setBoardCount}
+        boardCount={props.boardCount}
+      />
       <ChooseIcon
         color={props.color}
         icon={props.icon}
