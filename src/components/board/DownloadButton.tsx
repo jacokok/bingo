@@ -4,7 +4,6 @@ import { Button, CircularProgress } from "@material-ui/core";
 import { saveAs } from "file-saver";
 import { PDFDocument } from "./Document";
 import { IconType } from "../Icons";
-// import * as worker from "../../workers/DownloadWorker";
 
 const { pdf } = pdflib;
 
@@ -18,24 +17,16 @@ interface Props {
 export const DownloadButton = (props: Props) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  // const test = async () => {
-  //   worker.postMessage();
-  //   console.log(worker);
-  // };
-
   const downloadPDF = async () => {
     setIsLoading(true);
-    const asPdf = pdf([] as any);
-    const MyDoc = (
+    const blob = await pdf(
       <PDFDocument
         words={props.words}
         boardCount={props.boardCount}
         color={props.color}
         icon={props.icon}
       />
-    );
-    asPdf.updateContainer(MyDoc);
-    const blob = await asPdf.toBlob();
+    ).toBlob();
     saveAs(blob, "document.pdf");
     setIsLoading(false);
   };
