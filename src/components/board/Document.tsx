@@ -3,7 +3,7 @@ import pdf from "@react-pdf/renderer";
 
 import Roboto from "../../fonts/Roboto-Regular.ttf";
 import RobotoBold from "../../fonts/Roboto-Bold.ttf";
-import { Row } from "./Rows";
+import { Row } from "./Row";
 import { IconType } from "../Icons";
 
 const { Page, Text, View, Document, StyleSheet, Font } = pdf;

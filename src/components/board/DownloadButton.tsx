@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import pdflib from "@react-pdf/renderer";
 import { Button, CircularProgress } from "@material-ui/core";
 import { saveAs } from "file-saver";
-import { PDFDocument } from "./Documents";
+import { PDFDocument } from "./Document";
 import { IconType } from "../Icons";
 import * as worker from "../../workers/DownloadWorker";
 

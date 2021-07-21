@@ -1,7 +1,7 @@
 import React from "react";
 import "./board.css";
 import { useTheme } from "@material-ui/core/styles";
-import { Preview } from "./Previews";
+import { Preview } from "./Preview";
 import { IconType } from "../Icons";
 
 interface Props {
