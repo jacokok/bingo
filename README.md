@@ -12,7 +12,3 @@ https://jacokok.github.io/bingo/
 npm i
 npm run dev
 ```
-
-## Todo
-
-- Local Storage save words
