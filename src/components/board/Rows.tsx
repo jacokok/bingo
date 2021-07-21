@@ -1,6 +1,6 @@
 import React from "react";
 import pdf from "@react-pdf/renderer";
-import { Cell } from "./Cell";
+import { Cell } from "./Cells";
 import { IconType } from "../Icons";
 
 const { View } = pdf;

@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import pdflib from "@react-pdf/renderer";
 import { Button, CircularProgress } from "@material-ui/core";
 import { saveAs } from "file-saver";
-import { PDFDocument } from "./Document";
+import { PDFDocument } from "./Documents";
 import { IconType } from "../Icons";
-import { debounce } from "../../utils/utils";
+import * as worker from "../../workers/DownloadWorker";
 
 const { pdf } = pdflib;
 
@@ -18,9 +18,9 @@ interface Props {
 export const DownloadButton = (props: Props) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const download = async () => {
-    setIsLoading(true);
-    await downloadPDF();
+  const test = async () => {
+    worker.postMessage();
+    console.log(worker);
   };
 
   const downloadPDF = async () => {
@@ -40,15 +40,13 @@ export const DownloadButton = (props: Props) => {
     setIsLoading(false);
   };
 
-  const deboucnedDownloadPDF = debounce(downloadPDF, 100);
-
   return (
     <React.Fragment>
       {isLoading ? (
         <CircularProgress />
       ) : (
         <Button
-          onClick={download}
+          onClick={test}
           variant="contained"
           color="primary"
           disabled={isLoading}
