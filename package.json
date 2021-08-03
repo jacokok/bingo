@@ -17,7 +17,7 @@
   "dependencies": {
     "@material-ui/core": "^4.12.2",
     "@material-ui/icons": "^4.11.2",
-    "@react-pdf/renderer": "^2.0.17",
+    "@react-pdf/renderer": "^2.0.18",
     "file-saver": "^2.0.5",
     "material-ui-color": "^1.2.0",
     "react": "^17.0.2",
