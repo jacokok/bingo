@@ -1,6 +1,6 @@
 import React from "react";
 import pdf from "@react-pdf/renderer";
-import CasinoIcon from "@material-ui/icons/Casino";
+import CasinoIcon from "@mui/icons-material/Casino";
 const { Svg, G, Path } = pdf;
 
 interface Props {

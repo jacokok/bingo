@@ -1,5 +1,5 @@
-import { Card, CardHeader, CardContent } from "@material-ui/core";
-import { ColorPalette } from "material-ui-color";
+import { Card, CardHeader, CardContent } from "@mui/material";
+import { ColorPalette } from "../ColorPalette";
 import React from "react";
 
 interface Props {
@@ -24,7 +24,7 @@ const palette = {
 } as Record<string, string>;
 
 export const PickColour = (props: Props) => {
-  const hangleColorChange = (newValue: string) => {
+  const handleColorChange = (newValue: string) => {
     props.setColor(palette[newValue]);
   };
 
@@ -32,7 +32,7 @@ export const PickColour = (props: Props) => {
     <Card style={{ marginBottom: 20 }}>
       <CardHeader subheader="1. Pick Colour" />
       <CardContent>
-        <ColorPalette palette={palette} onSelect={hangleColorChange} />
+        <ColorPalette palette={palette} onSelect={handleColorChange} />
       </CardContent>
     </Card>
   );

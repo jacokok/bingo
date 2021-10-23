@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardContent } from "@material-ui/core";
+import { Card, CardHeader, CardContent } from "@mui/material";
 import React from "react";
 import { DownloadButton } from "../board/DownloadButton";
 import { IconType } from "../Icons";
