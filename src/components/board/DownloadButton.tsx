@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import pdflib from "@react-pdf/renderer";
-import { Button, CircularProgress } from "@material-ui/core";
+import { Button, CircularProgress } from "@mui/material";
 import { saveAs } from "file-saver";
 import { PDFDocument } from "./Document";
 import { IconType } from "../Icons";

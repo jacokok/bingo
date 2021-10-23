@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardContent, Slider } from "@material-ui/core";
+import { Card, CardHeader, CardContent, Slider } from "@mui/material";
 import React from "react";
 import { debounce } from "../../utils/utils";
 

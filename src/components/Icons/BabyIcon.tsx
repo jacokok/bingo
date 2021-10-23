@@ -1,6 +1,6 @@
 import React from "react";
 import pdf from "@react-pdf/renderer";
-import { ChildFriendly } from "@material-ui/icons";
+import { ChildFriendly } from "@mui/icons-material";
 const { Svg, G, Path } = pdf;
 
 interface Props {

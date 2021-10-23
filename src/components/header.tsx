@@ -1,7 +1,7 @@
-import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
 import React from "react";
-import WbSunnyIcon from "@material-ui/icons/WbSunny";
-import Brightness3Icon from "@material-ui/icons/Brightness3";
+import WbSunnyIcon from "@mui/icons-material/WbSunny";
+import Brightness3Icon from "@mui/icons-material/Brightness3";
 
 interface Props {
   isDark: boolean;
@@ -16,21 +16,17 @@ export const Header = (props: Props) => {
     <IconButton
       onClick={toggleChecked}
       size="small"
-      style={{
-        backgroundColor: "#ff6e00",
-      }}
+      sx={{ bgcolor: "primary.dark" }}
     >
-      <WbSunnyIcon color="primary" />
+      <WbSunnyIcon sx={{ color: "text.primary" }} />
     </IconButton>
   ) : (
     <IconButton
       onClick={toggleChecked}
       size="small"
-      style={{
-        backgroundColor: "#303234",
-      }}
+      sx={{ bgcolor: "primary.light" }}
     >
-      <Brightness3Icon color="primary" />
+      <Brightness3Icon sx={{ color: "text.primary" }} />
     </IconButton>
   );
 

@@ -1,6 +1,6 @@
 import React from "react";
 import pdf from "@react-pdf/renderer";
-import CloseIcon from "@material-ui/icons/Close";
+import CloseIcon from "@mui/icons-material/Close";
 const { Svg, G, Path } = pdf;
 
 interface Props {

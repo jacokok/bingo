@@ -2,82 +2,18 @@ import React, { useState } from "react";
 import { Board } from "../components/board";
 import { Config } from "../components/config/config";
 import { Header } from "../components/header";
-import { ThemeProvider } from "@material-ui/core/styles";
-import { createTheme, Grid, Paper } from "@material-ui/core";
+import {
+  CssBaseline,
+  ThemeProvider,
+  createTheme,
+  ThemeOptions,
+  Grid,
+  Paper,
+} from "@mui/material";
 import { IconType } from "../components/Icons";
 import { useLocalStorage } from "../hooks/localstorage";
-
-const defaultWords = [
-  "Handdoeke",
-  "Badmatjie",
-  "Laken",
-  "Pas laken",
-  "Kussing slope",
-  "Vaddoeke",
-  "Waslappe",
-  "Sout potjie",
-  "Peper potjie",
-  "Asyn houer",
-  "Olie houer",
-  "Koek pan",
-  "Muffin pan",
-  "Brood pan",
-  "Ys houer",
-  "Messe",
-  "Vurke",
-  "Lepels",
-  "Tee koppies",
-  "Tee pot",
-  "Tee lepels",
-  "Koek staander",
-  "Glase",
-  "Wit wyn glase",
-  "Rooi wyn glase",
-  "Whiskey glase",
-  "Tupperware",
-  "Koek roller",
-  "Waspoeier houer",
-  "Koek blik",
-  "Koffie bekers",
-  "Tee koppie",
-  "Sny bord",
-  "Hour bord",
-  "Kaas bord",
-  "Kaas Mes",
-  "Sop lepel",
-  "Mash drukker",
-  "Sker",
-  "Spatula",
-  "Kaas snyer",
-  "Rasper",
-  "Sif",
-  "Maatbeker",
-  "Maat lepels",
-  "Mandjies",
-  "Caserole",
-  "Cake lifter",
-  "Op-skep bakke",
-  "Tert bak",
-  "Koffie houer",
-  "Tee houer",
-  "Kerse",
-  "Plantjies",
-  "Handy Andy",
-  "Waspoeier",
-  "Sunlight Liquid",
-  "Doom",
-  "Speserye",
-  "Blompot",
-  "Kussings",
-  "Lekker ruik stokkies",
-  "Houtlepel",
-  "Borde",
-  "Klein bordjies",
-  "Bakkies",
-  "Sop Bakkies",
-  "Melk beker",
-  "Suiker pot",
-];
+import darkScrollbar from "@mui/material/darkScrollbar";
+import { defaultWords } from "../words";
 
 export const Boards = () => {
   const [words, setWords] = useLocalStorage("words", defaultWords);
@@ -88,14 +24,22 @@ export const Boards = () => {
 
   const theme = createTheme({
     palette: {
-      type: isDark ? "dark" : "light",
+      mode: isDark ? "dark" : "light",
       primary: {
         main: color,
+      },
+    },
+    components: {
+      MuiCssBaseline: {
+        styleOverrides: {
+          body: isDark ? darkScrollbar() : null,
+        },
       },
     },
   });
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <Paper style={{ background: theme.palette.background.default }}>
         <Header isDark={isDark} setIsDark={setIsDark} />
 

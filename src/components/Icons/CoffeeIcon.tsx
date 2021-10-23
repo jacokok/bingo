@@ -1,6 +1,6 @@
 import React from "react";
 import pdf from "@react-pdf/renderer";
-import LocalCafeIcon from "@material-ui/icons/LocalCafe";
+import LocalCafeIcon from "@mui/icons-material/LocalCafe";
 const { Svg, G, Path } = pdf;
 
 interface Props {

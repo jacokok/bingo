@@ -1,6 +1,6 @@
 import React from "react";
 import pdf from "@react-pdf/renderer";
-import FilterVintageIcon from "@material-ui/icons/FilterVintage";
+import FilterVintageIcon from "@mui/icons-material/FilterVintage";
 const { Svg, G, Path } = pdf;
 
 interface Props {

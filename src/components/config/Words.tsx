@@ -1,12 +1,17 @@
 import React, { useRef } from "react";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import { makeStyles } from "@material-ui/core/styles";
-import { useTheme } from "@material-ui/core/styles";
-import { Card, CardContent, CardHeader, TextField } from "@material-ui/core";
+import { useTheme } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  TextField,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Dialog,
+  Button,
+} from "@mui/material";
 
 interface Props {
   words: Array<string>;
@@ -45,13 +50,10 @@ export const Words = (props: Props) => {
   }, [open]);
 
   const theme = useTheme();
-  const useStyles = makeStyles({
-    root: {
-      background: theme.palette.primary.main,
-      color: theme.palette.primary.contrastText,
-    },
+  const MyDialogTitle = styled(DialogTitle)({
+    background: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
   });
-  const classes = useStyles();
 
   return (
     <React.Fragment>
@@ -73,9 +75,7 @@ export const Words = (props: Props) => {
         color="primary"
         fullWidth={true}
       >
-        <DialogTitle id="scroll-dialog-title" className={classes.root}>
-          Edit Words
-        </DialogTitle>
+        <MyDialogTitle id="scroll-dialog-title">Edit Words</MyDialogTitle>
         <DialogContent dividers={true}>
           <TextField
             label="Words"

@@ -1,6 +1,6 @@
 import React from "react";
 import "./board.css";
-import { useTheme } from "@material-ui/core/styles";
+import { useTheme } from "@mui/material";
 import { Preview } from "./Preview";
 import { IconType } from "../Icons";
 
